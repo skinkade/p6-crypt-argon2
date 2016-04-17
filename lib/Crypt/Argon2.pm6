@@ -8,7 +8,7 @@ unit module Crypt::Argon2;
 
 
 sub argon2-hash(Str $pwd, :$t_cost = 2, :$m_cost = 512,
-                :$parallelism = 1, :$hashlen = 16) is export {
+                :$parallelism = 2, :$hashlen = 16) is export {
     my $saltlen = 16;
     my $encodedlen = argon2_encodedlen($t_cost, $m_cost, $parallelism,
                                        $saltlen, $hashlen);
