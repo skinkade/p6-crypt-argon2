@@ -1,6 +1,7 @@
 use v6;
 use strict;
 use NativeCall;
+use LibraryMake;
 
 unit module Crypt::Argon2::Base;
 

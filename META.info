@@ -3,11 +3,11 @@
     "version" : "0.1.0",
     "author" : "Shawn Kinkade",
     "description" : "Easy Argon2i password hashing",
-    "build-depends" : [ "Crypt::Random" ],
+    "build-depends" : [ "Crypt::Random", "LibraryMake" ],
     "provides" : {
         "Crypt::Argon2" : "lib/Crypt/Argon2.pm6",
         "Crypt::Argon2::Base" : "lib/Crypt/Argon2/Base.pm6"
     },
-    "resources" : [ "libargon2.so" ],
+    "resources" : [ "libargon2.so", "libargon2.dylib", "libargon2.dll" ],
     "source-url" : "git://github.com/skinkade/p6-crypt-argon2.git"
 }

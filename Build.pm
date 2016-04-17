@@ -10,7 +10,8 @@ class Build {
 
         mkdir($res);
         chdir($ext);
-        my $proc = shell(%vars<MAKE>);
+        my $make = %vars<MAKE>;
+        my $proc = shell("$make libs");
 
         if $proc.exitcode != 0 {
             die("make failure: "~$proc.exitcode);
