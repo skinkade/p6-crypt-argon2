@@ -1,4 +1,4 @@
-# Crypt::Argon2
+# Crypt::Argon2 [![Build Status](https://travis-ci.org/skinkade/p6-crypt-argon2.svg?branch=master)](https://travis-ci.org/skinkade/p6-crypt-argon2)
 Easy Argon2i password hashing in Perl6.
 
 ## Synopsis
