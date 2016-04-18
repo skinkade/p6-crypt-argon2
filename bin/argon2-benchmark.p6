@@ -8,9 +8,9 @@ use Crypt::Argon2;
 sub MAIN (int :$t_cost = 2, int :$m_cost = 512, int :$parallelism = 2, int :$hashlen = 16) {
     say "Running 100 iterations of argon2-verify() with the following settings:";
     say "\tTime cost: "~$t_cost;
-    say "\tMemory cost (kibibytes): "~$m_cost;
-    say "\tParallelism: "~$parallelism;
-    say "\tHash length: "~$hashlen;
+    printf "\tMemory: %d KiB\n", $m_cost;
+    printf "\tParallelism: %d threads\n", $parallelism;
+    printf "\tHash length: %d bytes\n", $hashlen;
 
     my $hash = argon2-hash("", :t_cost($t_cost), :m_cost($m_cost),
                            :parallelism($parallelism), :hashlen($hashlen));
@@ -21,5 +21,5 @@ sub MAIN (int :$t_cost = 2, int :$m_cost = 512, int :$parallelism = 2, int :$has
     }
     my $stop = now;
 
-    say "Ms per verification: "~(($stop - $start) * 10);
+    printf "Time per verification: %.2f ms\n", ($stop - $start) * 10;
 }
