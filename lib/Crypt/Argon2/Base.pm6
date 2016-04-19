@@ -36,3 +36,16 @@ sub argon2i_verify(Str $encoded is encoded('utf8'),
     returns int
     is export
     { * }
+
+
+
+sub argon2d_hash_raw(uint32 $t_cost,
+                     uint32 $m_cost,
+                     uint32 $parallelism,
+                     Str $pwd is encoded('utf8'), uint32 $pwdlen,
+                     Buf $salt, size_t $saltlen,
+                     Buf $hash, size_t $hashlen)
+    is native(ARGON2)
+    returns int
+    is export
+    { * }
