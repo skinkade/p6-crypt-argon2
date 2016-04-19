@@ -17,8 +17,12 @@ sub argon2-hash(Str $pwd, :$t_cost = 2, :$m_cost = 512,
     my $encoded = Buf.new;
     $encoded[$encodedlen - 1] = 0;
 
-    argon2i_hash_encoded($t_cost, $m_cost, $parallelism, $pwd, $pwd.encode.bytes,
-                         $salt, $saltlen, $hashlen, $encoded, $encodedlen);
+    my $err = argon2i_hash_encoded($t_cost, $m_cost, $parallelism,
+                                   $pwd, $pwd.encode.bytes,
+                                   $salt, $saltlen, $hashlen,
+                                   $encoded, $encodedlen);
+
+    if $err { die("Hashing failed with error code: "~$err); }
 
     $encoded.decode;
 }

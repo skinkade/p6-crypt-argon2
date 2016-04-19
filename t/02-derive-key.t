@@ -1,7 +1,7 @@
-use v6;
-use strict;
-
 use Test;
+
+use lib 'lib';
+
 use Crypt::Argon2::DeriveKey;
 
 
@@ -17,3 +17,7 @@ for ^$test.elems {
     }
 }
 ok $same_key, "Key can be successfully re-derived";
+
+
+
+done-testing;

@@ -52,7 +52,7 @@ the key derivation module returns `(Buf $key, Argon2-meta $meta)`, where `$meta`
 contains the necessary metadata for recreating `$key`.
 
 Optional parameters for `argon2-derive-key()` are the same as `argon2-hash()`,
-with the inclusion of `:$keylen = 32` (i.e. key length defaulting to 256bits).
+except for `$hashlen` being renamed to `$keylen` for clarity.
 
 ```
 > use Crypt::Argon2::DeriveKey;
