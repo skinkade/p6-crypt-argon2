@@ -1,5 +1,5 @@
 # Crypt::Argon2 [![Build Status](https://travis-ci.org/skinkade/p6-crypt-argon2.svg?branch=master)](https://travis-ci.org/skinkade/p6-crypt-argon2)
-Easy Argon2i password hashing in Perl6.
+Easy Argon2 password hashing and key derivation in Perl6.
 
 ## Synopsis
 ```
@@ -43,5 +43,25 @@ Time per verification: 102.52 ms
 
 ## Argon2d Key Generation
 Argon2**i** is recommended for password hashing, and Argon2**d** for generating
-keys. If there is interest, I will extend the library binding and create a
-sub-module intended for this latter purpose.
+keys. The former is resistant to side-channel attacks, while the latter is
+better against GPU-based attacks. Only use Argon2**d** if you know your
+environment is side-channel-free.
+
+In lieu of the `crypt()`-style encoded string provided by the main library,
+the key derivation module returns `(Buf $key, Argon2-meta $meta)`, where `$meta`
+contains the necessary metadata for recreating `$key`.
+
+Optional parameters for `argon2-derive-key()` are the same as `argon2-hash()`,
+with the inclusion of `:$keylen = 32` (i.e. key length defaulting to 256bits).
+
+```
+> use Crypt::Argon2::DeriveKey;
+
+> my ($key, $meta) = argon2-derive-key("password");
+...
+> $key;
+Buf:0x<d5 f6 8d 4b ca c7 73 2d ce 0a 6d e1 8f c2 6d 56 4d 6f ee 10 c3 5d 16 6b 5b 7d 92 28 41 96 92 f5>
+
+> argon2-derive-key("password", $meta);
+Buf:0x<d5 f6 8d 4b ca c7 73 2d ce 0a 6d e1 8f c2 6d 56 4d 6f ee 10 c3 5d 16 6b 5b 7d 92 28 41 96 92 f5>
+```
