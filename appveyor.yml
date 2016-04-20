@@ -12,6 +12,7 @@ install:
   - rakudobrew build zef
   - cd %APPVEYOR_BUILD_FOLDER%
   - zef --verbose --depsonly install .
+  - zef build .
 
 build: off
 
