@@ -1,5 +1,4 @@
 *.so
 *.o
 *.a
-*.dll
 argon2

@@ -3,22 +3,24 @@ use LibraryMake;
 
 class Build {
     method build($dist) {
-        my $ext = "$dist/ext/argon2-20160406";
-        my $res = "$dist/resources";
+        if !$*DISTRO.is-win {
+            my $ext = "$dist/ext/argon2-20160406";
+            my $res = "$dist/resources";
 
-        my %vars = get-vars($ext);
+            my %vars = get-vars($ext);
 
-        mkdir($res);
-        chdir($ext);
-        my $make = %vars<MAKE>;
-        my $proc = shell("$make libs");
+            mkdir($res);
+            chdir($ext);
+            my $make = %vars<MAKE>;
+            my $proc = shell("$make libs");
 
-        if $proc.exitcode != 0 {
-            die("make failure: "~$proc.exitcode);
+            if $proc.exitcode != 0 {
+                die("make failure: "~$proc.exitcode);
+            }
+
+            my $so = %vars<SO>;
+            move("$ext/libargon2$so", "$res/libargon2$so");
         }
-
-        my $so = %vars<SO>;
-        move("$ext/libargon2$so", "$res/libargon2$so");
     }
 
     method isa($what) {
