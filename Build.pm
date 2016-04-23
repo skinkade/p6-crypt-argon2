@@ -5,11 +5,10 @@ class Build {
     method build($dist) {
         if !$*DISTRO.is-win {
             my $ext = "$dist/ext/argon2-20160406";
-            my $res = "$dist/resources";
+            my $res = "$dist/resources/libraries";
 
             my %vars = get-vars($ext);
 
-            mkdir($res);
             chdir($ext);
             my $make = %vars<MAKE>;
             my $proc = shell("$make libs");
