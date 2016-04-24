@@ -9,6 +9,8 @@ class Build {
 
             my %vars = get-vars($ext);
 
+            mkdir("$dist/resources");
+            mkdir($res);
             chdir($ext);
             my $make = %vars<MAKE>;
             my $proc = shell("$make libs");
