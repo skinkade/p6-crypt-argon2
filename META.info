@@ -1,7 +1,7 @@
 {
     "name" : "Crypt::Argon2",
-    "version" : "0.1.0",
-    "author" : "Shawn Kinkade",
+    "version" : "0.2.0",
+    "author" : "github:skinkade",
     "description" : "Easy Argon2i password hashing",
     "build-depends" : [ "Crypt::Random", "LibraryMake" ],
     "provides" : {
