@@ -15,7 +15,7 @@ Password hashing and verification are one function each, and utilze a
 > use Crypt::Argon2
 
 > my $hash = argon2-hash("password")
-$argon2i$v=19$m=512,t=2,p=2$v+loufJytQuBw5KdkKxaWA$5TWMJQg8B0KdQ6lU/ZfQWg
+$argon2i$v=19$m=65536,t=2,p=2$q5gCW1J92SNJPlPtoOsP1Q$BCGwLfZsfL7vyF69PhHsQA
 
 > argon2-verify($hash, "password")
 True
