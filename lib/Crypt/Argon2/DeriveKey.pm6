@@ -17,7 +17,7 @@ class Argon2-meta is export {
 
 
 
-multi sub argon2-derive-key(Str $pwd, :$t_cost = 3, :$m_cost = 0xFFFF,
+multi sub argon2-derive-key(Str $pwd, :$t_cost = 3, :$m_cost = 1 +< 17,
                             :$parallelism = 2, :$keylen = 32) is export {
 
     my $key = Buf.new;

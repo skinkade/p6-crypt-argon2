@@ -5,7 +5,7 @@ use Crypt::Argon2;
 
 
 
-sub MAIN (int :$t_cost = 2, int :$m_cost = 512, int :$parallelism = 2, int :$hashlen = 16) {
+sub MAIN (int :$t_cost = 2, int :$m_cost = 1 +< 16, int :$parallelism = 2, int :$hashlen = 16) {
     say "Running 100 iterations of argon2-verify() with the following settings:";
     say "\tTime cost: "~$t_cost;
     printf "\tMemory: %d KiB\n", $m_cost;
