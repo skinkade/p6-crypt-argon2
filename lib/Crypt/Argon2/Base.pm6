@@ -39,7 +39,7 @@ sub argon2i_verify(Str $encoded is encoded('utf8'),
 
 
 
-sub argon2d_hash_raw(uint32 $t_cost,
+sub argon2i_hash_raw(uint32 $t_cost,
                      uint32 $m_cost,
                      uint32 $parallelism,
                      Str $pwd is encoded('utf8'), uint32 $pwdlen,
