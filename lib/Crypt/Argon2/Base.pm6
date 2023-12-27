@@ -6,7 +6,7 @@ unit module Crypt::Argon2::Base;
 
 
 
-constant ARGON2 = %?RESOURCES<libraries/argon2>.Str;
+constant ARGON2 = %?RESOURCES<libraries/argon2>;
 
 
 
