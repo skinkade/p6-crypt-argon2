@@ -24,7 +24,7 @@ sub argon2-hash(Str $pwd, :$t_cost = 2, :$m_cost = 1 +< 16,
 
     if $err { die("Hashing failed with error code: "~$err); }
 
-    $encoded.decode;
+    $encoded.decode.subst(/\0+$/, '');
 }
 
 sub argon2-verify($encoded, $pwd) is export {
